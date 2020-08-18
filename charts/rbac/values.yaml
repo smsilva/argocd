@@ -1,0 +1,6 @@
+azure:
+  groups:
+    - name: "Group 1"
+      id: "888b4ec2-b78c-4af3-8067-a12a0c0912d9"
+    - name: "Group 2"
+      id: "512a4740-a250-4c76-b5cc-824cde86d3f9"

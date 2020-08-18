@@ -1,0 +1,6 @@
+apiVersion: v2
+name: rbac
+description: Cluster Roles and Cluster Role Bindings to limit Kubernetes User Access
+type: application
+version: 0.1.0
+appVersion: 1.16.0
