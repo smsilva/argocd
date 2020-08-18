@@ -1,0 +1,100 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2020-08-18T11:58:57Z"
+  generation: 34
+  name: nginx
+  namespace: argocd
+  resourceVersion: "1431"
+  selfLink: /apis/argoproj.io/v1alpha1/namespaces/argocd/applications/nginx
+  uid: f0c7bbff-2ede-447e-8f3b-eda39bff244c
+spec:
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: nginx
+    repoURL: https://github.com/smsilva/argocd.git
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+status:
+  health:
+    status: Healthy
+  history:
+  - deployedAt: "2020-08-18T11:58:59Z"
+    id: 0
+    revision: 98e2ec58750459a975d9afb870c191a98065513f
+    source:
+      path: nginx
+      repoURL: https://github.com/smsilva/argocd.git
+  observedAt: "2020-08-18T12:37:45Z"
+  operationState:
+    finishedAt: "2020-08-18T11:59:00Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      sync:
+        revision: 98e2ec58750459a975d9afb870c191a98065513f
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2020-08-18T11:58:58Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/nginx created
+        name: nginx
+        namespace: dev
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/nginx created
+        name: nginx
+        namespace: dev
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 98e2ec58750459a975d9afb870c191a98065513f
+      source:
+        path: nginx
+        repoURL: https://github.com/smsilva/argocd.git
+  reconciledAt: "2020-08-18T12:37:45Z"
+  resources:
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: nginx
+    namespace: dev
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: nginx
+    namespace: dev
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - nginx:1.18
+  sync:
+    comparedTo:
+      destination:
+        namespace: dev
+        server: https://kubernetes.default.svc
+      source:
+        path: nginx
+        repoURL: https://github.com/smsilva/argocd.git
+    revision: 98e2ec58750459a975d9afb870c191a98065513f
+    status: Synced

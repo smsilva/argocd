@@ -1,0 +1,8 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: restricted-access-users
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "namespaces", "deployments"]
+  verbs: ["get", "list"]
