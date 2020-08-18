@@ -15,8 +15,6 @@ spec:
   source:
     repoURL: https://github.com/smsilva/argocd.git
     path: charts/rbac
-    server: https://kubernetes.default.svc
-    namespace: default
   syncPolicy:
     automated:
       prune: true
