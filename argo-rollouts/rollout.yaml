@@ -16,7 +16,7 @@ spec:
             - primary # At least one route is required
       steps:
       - setWeight: 5
-      - pause: {}
+      - pause: {duration: 30}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: argoproj/rollouts-demo:yellow
+        image: argoproj/rollouts-demo:blue
         ports:
         - name: http
           containerPort: 8080
