@@ -11,12 +11,12 @@ spec:
         enabled: true
     egressGateways:
       - name: istio-egressgateway
-        enabled: true
+        enabled: false
   values:
     global:
       proxy:
         autoInject: enabled
-        privileged: true
+        privileged: false
     gateways:
       istio-ingressgateway:
         serviceAnnotations:
