@@ -4,10 +4,10 @@ source:
 applications:
   - name: istio-operator-deploy
     namespace: istio-operator
-    wave: 1
+    wave: -3
   - name: istio-operator-instance
     namespace: istio-system
-    wave: 2
+    wave: -2
   - name: istio-httpbin-deploy
     namespace: default
-    wave: 3
+    wave: -1

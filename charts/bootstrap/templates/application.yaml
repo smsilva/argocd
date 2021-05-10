@@ -6,9 +6,7 @@ metadata:
   name: {{ $application.name }}
   namespace: argocd
   annotations:
-    helm.sh/hook: pre-install
-    helm.sh/hook-weight: "{{ $application.wave | default 10 }}"
-    # argocd.argoproj.io/sync-wave: "{{ $application.wave | default 10 }}"
+    argocd.argoproj.io/sync-wave: "{{ $application.wave | default 10 }}"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
