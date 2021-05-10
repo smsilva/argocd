@@ -1,0 +1,13 @@
+source:
+  repo: https://github.com/smsilva/argocd.git
+
+applications:
+  - name: istio-operator-deploy
+    namespace: istio-operator
+    wave: 1
+  - name: istio-operator-instance
+    namespace: istio-system
+    wave: 2
+  - name: istio-httpbin-deploy
+    namespace: default
+    wave: 3

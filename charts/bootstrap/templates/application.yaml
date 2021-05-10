@@ -1,0 +1,24 @@
+{{- range $application := .Values.applications }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $application.name }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "{{ $application.wave | default 10 }}"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: {{ $.Values.source.repo }}
+    path: charts/{{ $application.name }}
+  destination:
+    namespace: {{ $application.namespace }}
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: {{ $application.prune | default true }}
+      selfHeal: {{ $application.selfHeal | default true }}
+{{- end }}
