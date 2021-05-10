@@ -6,7 +6,7 @@ metadata:
   name: {{ $application.name }}
   namespace: argocd
   annotations:
-    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "{{ $application.wave | default 10 }}"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
