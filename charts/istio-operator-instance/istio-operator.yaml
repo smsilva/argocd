@@ -9,7 +9,15 @@ spec:
     ingressGateways:
       - name: istio-ingressgateway
         enabled: true
+    egressGateways:
+      - name: istio-egressgateway
+        enabled: true
   values:
     global:
       proxy:
         autoInject: enabled
+        privileged: true
+    gateways:
+      istio-ingressgateway:
+        serviceAnnotations:
+          service.beta.kubernetes.io/azure-dns-label-name: silvios-dev
