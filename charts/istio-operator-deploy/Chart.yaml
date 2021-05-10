@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 name: istio-operator
 version: 1.9.1
 tillerVersion: ">=2.7.2"
