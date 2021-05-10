@@ -20,5 +20,5 @@ spec:
   syncPolicy:
     automated:
       prune: {{ $application.prune | default true }}
-      selfHeal: {{ $application.selfHeal | default true }}
+      selfHeal: {{ $application.selfHeal | default false }}
 {{- end }}
