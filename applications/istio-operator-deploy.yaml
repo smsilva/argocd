@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-operator-deploy
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: istio-operator
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/smsilva/argocd.git
+    path: charts/istio-operator-deploy
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
