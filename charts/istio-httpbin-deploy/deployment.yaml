@@ -13,6 +13,8 @@ spec:
       labels:
         app: httpbin
         version: v1
+      annotations:
+        argocd.argoproj.io/sync-wave: "3"
     spec:
       serviceAccountName: httpbin
       containers:

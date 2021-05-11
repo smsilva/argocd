@@ -9,6 +9,9 @@ spec:
     ingressGateways:
       - name: istio-ingressgateway
         enabled: true
+        k8s:
+          podAnnotations:
+            argocd.argoproj.io/sync-wave: "1"
     egressGateways:
       - name: istio-egressgateway
         enabled: false
