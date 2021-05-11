@@ -3,6 +3,8 @@ kind: IstioOperator
 metadata:
   namespace: istio-system
   name: istio-operator
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   profile: default
   components:
@@ -11,7 +13,7 @@ spec:
         enabled: true
         k8s:
           podAnnotations:
-            argocd.argoproj.io/sync-wave: "1"
+            argocd.argoproj.io/sync-wave: "2"
     egressGateways:
       - name: istio-egressgateway
         enabled: false
