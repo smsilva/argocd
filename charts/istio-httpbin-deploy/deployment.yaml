@@ -1,3 +1,19 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: httpbin-pre-sync
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  template:
+    spec:
+      containers:
+        - name: initialization
+          image: alpine:latest
+          command: ["sleep", "5"]
+      restartPolicy: Never
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -31,3 +47,20 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: httpbin-sync
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  template:
+    spec:
+      containers:
+        - name: finishing-sync
+          image: alpine:latest
+          command: ["sleep", "5"]
+      restartPolicy: Never
