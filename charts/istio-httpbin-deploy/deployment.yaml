@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: httpbin-pre-sync
+  name: httpbin-pre-sync
   annotations:
     argocd.argoproj.io/hook: PreSync
 spec:
