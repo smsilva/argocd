@@ -1,17 +1,32 @@
-apiVersion: networking.k8s.io/v1
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: httpbin-ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   rules:
+#   - http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: httpbin
+#             port:
+#               number: 80
+---
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: httpbin-ingress
+  name: nginx
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/rewrite-target: "/"
 spec:
   rules:
   - http:
       paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: httpbin
-            port:
-              number: 80
+      - backend:
+          serviceName: httpbin
+          servicePort: 80
