@@ -11,7 +11,7 @@ spec:
   project: default
   destination:
     namespace: default
-    server: https://kubernetes.default.svc
+    name: in-cluster
   source:
     repoURL: https://github.com/smsilva/argocd.git
     path: charts/bootstrap

@@ -10,13 +10,13 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: {{ $application.project | default "default" }}
   source:
     repoURL: {{ $.Values.source.repo }}
-    path: charts/{{ $application.name }}
+    path: {{ $application.path | default $.Values.source.path }}/{{ $application.name }}
   destination:
     namespace: {{ $application.namespace }}
-    server: https://kubernetes.default.svc
+    name: {{ $.Values.destination.cluster }}
   syncPolicy:
     automated:
       prune: {{ $application.prune | default true }}

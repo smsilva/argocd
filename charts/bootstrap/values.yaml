@@ -1,5 +1,9 @@
 source:
   repo: https://github.com/smsilva/argocd.git
+  path: charts
+
+destination:
+  cluster: in-cluster
 
 applications:
   - name: istio-operator-deploy
