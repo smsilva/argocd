@@ -1,0 +1,191 @@
+{{if .Values.useEtcdOperator}}
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  annotations:
+    {{if .Values.customAnnotations}}{{range $element := split "," .Values.customAnnotations -}}
+    {{ $kv := split "=" $element -}}
+    {{if eq (len $kv) 2 -}}
+    {{ $kv._0 }}: "{{ $kv._1 }}"
+    {{- end}}
+    {{end}}{{end}}
+  labels:
+    {{if .Values.customLabels}}{{range $element := split "," .Values.customLabels -}}
+    {{ $kv := split "=" $element -}}
+    {{if eq (len $kv) 2 -}}
+    {{ $kv._0 }}: "{{ $kv._1 }}"
+    {{- end}}
+    {{end}}{{end}}
+    app: pl-monitoring
+  name: etcd-operator
+  namespace: {{ if .Release.Namespace }}{{ .Release.Namespace }}{{ else }}pl{{ end }}
+rules:
+- apiGroups:
+  - etcd.database.coreos.com
+  resources:
+  - etcdclusters
+  - etcdbackups
+  - etcdrestores
+  verbs:
+  - '*'
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - '*'
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  - endpoints
+  - persistentvolumeclaims
+  - events
+  verbs:
+  - '*'
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - '*'
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    {{if .Values.customAnnotations}}{{range $element := split "," .Values.customAnnotations -}}
+    {{ $kv := split "=" $element -}}
+    {{if eq (len $kv) 2 -}}
+    {{ $kv._0 }}: "{{ $kv._1 }}"
+    {{- end}}
+    {{end}}{{end}}
+  labels:
+    {{if .Values.customLabels}}{{range $element := split "," .Values.customLabels -}}
+    {{ $kv := split "=" $element -}}
+    {{if eq (len $kv) 2 -}}
+    {{ $kv._0 }}: "{{ $kv._1 }}"
+    {{- end}}
+    {{end}}{{end}}
+    app: pl-monitoring
+  name: etcd-operator
+  namespace: {{ if .Release.Namespace }}{{ .Release.Namespace }}{{ else }}pl{{ end }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: etcd-operator
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: {{ if .Release.Namespace }}{{ .Release.Namespace }}{{ else }}pl{{ end }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    {{if .Values.customAnnotations}}{{range $element := split "," .Values.customAnnotations -}}
+    {{ $kv := split "=" $element -}}
+    {{if eq (len $kv) 2 -}}
+    {{ $kv._0 }}: "{{ $kv._1 }}"
+    {{- end}}
+    {{end}}{{end}}
+  labels:
+    {{if .Values.customLabels}}{{range $element := split "," .Values.customLabels -}}
+    {{ $kv := split "=" $element -}}
+    {{if eq (len $kv) 2 -}}
+    {{ $kv._0 }}: "{{ $kv._1 }}"
+    {{- end}}
+    {{end}}{{end}}
+    app: pl-monitoring
+  name: etcd-operator
+  namespace: {{ if .Release.Namespace }}{{ .Release.Namespace }}{{ else }}pl{{ end }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pl-monitoring
+  template:
+    metadata:
+      annotations:
+        {{if .Values.customAnnotations}}{{range $element := split "," .Values.customAnnotations -}}
+        {{ $kv := split "=" $element -}}
+        {{if eq (len $kv) 2 -}}
+        {{ $kv._0 }}: "{{ $kv._1 }}"
+        {{- end}}
+        {{end}}{{end}}
+      labels:
+        {{if .Values.customLabels}}{{range $element := split "," .Values.customLabels -}}
+        {{ $kv := split "=" $element -}}
+        {{if eq (len $kv) 2 -}}
+        {{ $kv._0 }}: "{{ $kv._1 }}"
+        {{- end}}
+        {{end}}{{end}}
+        app: pl-monitoring
+        name: etcd-operator
+        plane: control
+    spec:
+      containers:
+      - command:
+        - etcd-operator
+        env:
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: PL_ETCD_TLS_CERTS
+          valueFrom:
+            secretKeyRef:
+              key: peer.key
+              name: etcd-peer-tls-certs
+        image: quay.io/coreos/etcd-operator:v0.9.4
+        name: etcd-operator
+---
+apiVersion: etcd.database.coreos.com/v1beta2
+kind: EtcdCluster
+metadata:
+  annotations:
+    {{if .Values.customAnnotations}}{{range $element := split "," .Values.customAnnotations -}}
+    {{ $kv := split "=" $element -}}
+    {{if eq (len $kv) 2 -}}
+    {{ $kv._0 }}: "{{ $kv._1 }}"
+    {{- end}}
+    {{end}}{{end}}
+  labels:
+    {{if .Values.customLabels}}{{range $element := split "," .Values.customLabels -}}
+    {{ $kv := split "=" $element -}}
+    {{if eq (len $kv) 2 -}}
+    {{ $kv._0 }}: "{{ $kv._1 }}"
+    {{- end}}
+    {{end}}{{end}}
+    app: pl-monitoring
+  name: pl-etcd
+  namespace: {{ if .Release.Namespace }}{{ .Release.Namespace }}{{ else }}pl{{ end }}
+spec:
+  TLS:
+    static:
+      member:
+        peerSecret: etcd-peer-tls-certs
+        serverSecret: etcd-server-tls-certs
+      operatorSecret: etcd-client-tls-certs
+  pod:
+    etcdEnv:
+    - name: ETCD_AUTO_COMPACTION_RETENTION
+      value: "10"
+    - name: ETCD_AUTO_COMPACTION_MODE
+      value: revision
+  size: 3
+  version: 3.4.3
+
+{{- end}}
