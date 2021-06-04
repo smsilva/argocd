@@ -39,7 +39,7 @@ newrelic-infra-operator:
   enabled: false
 
 global:
-  cluster: minikube
+  cluster: demo
   customSecretName: newrelic-bundle
   customSecretLicenseKey: license
 
