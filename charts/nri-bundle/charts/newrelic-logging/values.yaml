@@ -27,7 +27,7 @@
 fluentBit:
   logLevel: "info"
   path: "/var/log/containers/*.log"
-  criEnabled: false
+  criEnabled: true
   k8sLoggingExclude: "Off"
   additionalEnvVariables: []
   # additionalEnvVariables:
