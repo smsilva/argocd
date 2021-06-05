@@ -38,7 +38,7 @@ spec:
               value: "info"
             # Allowed values: "docker", "cri"
             - name: LOG_PARSER
-              value: "docker"
+              value: "cri"
             - name: PATH
               value: "/var/log/containers/*.log"
           image: newrelic/newrelic-fluentbit-output:1.4.6
