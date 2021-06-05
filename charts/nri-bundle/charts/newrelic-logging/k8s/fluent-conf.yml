@@ -44,6 +44,7 @@ data:
         Match          kube.*
         Kube_URL       https://kubernetes.default.svc.cluster.local:443
         Merge_Log      Off
+        Merge_Log_Trim On
 
   output-newrelic.conf: |
     [OUTPUT]
