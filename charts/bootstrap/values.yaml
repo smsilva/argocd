@@ -9,3 +9,6 @@ applications:
  - name: terraform-controller
    namespace: default
    wave: 1
+ - name: multi-cloud-buckets
+   namespace: default
+   wave: 2
