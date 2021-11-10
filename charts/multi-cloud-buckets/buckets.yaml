@@ -2,14 +2,20 @@
 apiVersion: google.storage.silvios.me/v1alpha1
 kind: Bucket
 metadata:
-  name: genericbucket1
+  name: mybucket1
 spec:
   location: southamerica-east1
 ---
 apiVersion: google.storage.silvios.me/v1alpha1
 kind: Bucket
 metadata:
-  name: genericbucket2
+  name: mybucket2
 spec:
   location: southamerica-east1
-
+---
+apiVersion: azure.storage.silvios.me/v1alpha1
+kind: Bucket
+metadata:
+  name: mybucket3
+spec:
+  location: centralus
