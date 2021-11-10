@@ -1,0 +1,19 @@
+{{- range $instance := .Values.instances }}
+---
+apiVersion: terraform.silvios.me/v1alpha1
+kind: StackInstance
+metadata:
+  name: {{ $instance.name }}
+spec:
+  stack:
+    registry: docker.io
+    image: silviosilva/google-bucket
+    version: 0.4.0
+    provider: google
+    backend: gcs
+  vars:
+    name: {{ $instance.name }}
+    location: {{ $instance.location }}
+  outputs:
+    - bucket_id
+{{- end }}
