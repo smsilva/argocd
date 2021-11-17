@@ -8,6 +8,8 @@ destination:
 applications:
   - name: terraform-controller
     namespace: default
+    wave: 100
 
   - name: google-bucket
     namespace: default
+    wave: 200
