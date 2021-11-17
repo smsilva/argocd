@@ -1,0 +1,8 @@
+instances:
+  - name: waspphotos
+    location: centralus
+    resource_group_name: wasp
+
+  - name: waspfiles
+    location: centraluss
+    resource_group_name: wasp

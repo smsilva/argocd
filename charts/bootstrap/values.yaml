@@ -12,3 +12,6 @@ applications:
 
   - name: google-bucket
     namespace: default
+
+  - name: azure-storage-account
+    namespace: default
