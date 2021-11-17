@@ -6,8 +6,8 @@ destination:
   cluster: in-cluster
 
 applications:
-  - name: httpbin
+  - name: terraform-controller
     namespace: default
 
-  - name: terraform-controller
+  - name: wordpress
     namespace: default
