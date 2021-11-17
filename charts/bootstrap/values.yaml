@@ -8,8 +8,9 @@ destination:
 applications:
   - name: terraform-controller
     namespace: default
-    wave: 100
+    wave: -1
 
   - name: google-bucket
     namespace: default
-    wave: 200
+
+  - name: wordpress
