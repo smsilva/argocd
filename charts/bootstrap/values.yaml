@@ -12,5 +12,3 @@ applications:
 
   - name: google-bucket
     namespace: default
-
-  - name: wordpress
