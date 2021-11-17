@@ -8,4 +8,6 @@ destination:
 applications:
   - name: httpbin
     namespace: default
-    wave: 100
+
+  - name: terraform-controller
+    namespace: default
