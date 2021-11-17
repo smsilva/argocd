@@ -4,5 +4,5 @@ instances:
     resource_group_name: wasp
 
   - name: waspfiles
-    location: centraluss
+    location: centralus
     resource_group_name: wasp
