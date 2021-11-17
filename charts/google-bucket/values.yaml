@@ -1,6 +1,3 @@
 instances:
   - name: wasp-files-1
     location: southamerica-east1
-
-  - name: wasp-files-2
-    location: southamerica-east1
