@@ -5,8 +5,7 @@ source:
 destination:
   cluster: in-cluster
 
-applications: []
-#  - name: terraform-controller
-#    namespace: default
-#  - name: multi-cloud-buckets
-#    namespace: default
+applications:
+  - name: httpbin
+    namespace: default
+    wave: 100
