@@ -9,5 +9,5 @@ applications:
   - name: terraform-controller
     namespace: default
 
-  - name: wordpress
+  - name: google-bucket
     namespace: default
