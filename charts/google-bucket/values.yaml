@@ -4,6 +4,3 @@ instances:
 
   - name: wasp-files
     location: southamerica-east1
-
-  - name: wasp-orders
-    location: southamerica-east1
