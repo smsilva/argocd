@@ -8,4 +8,8 @@ destination:
 applications:
   - name: terraform-controller
     namespace: default
-    wave: -1
+    wave: 0
+
+  - name: crossplane-config
+    namespace: default
+    wave: 1
