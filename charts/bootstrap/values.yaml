@@ -11,6 +11,10 @@ applications:
     namespace: default
     wave: 0
 
-  - name: crossplane-config
+  - name: crossplane-crds
+    namespace: default
+    wave: 0
+
+  - name: crossplane-compositions
     namespace: default
     wave: 1
