@@ -2,7 +2,7 @@
 apiVersion: google.storage.silvios.me/v1alpha1
 kind: Bucket
 metadata:
-  name: wasp-files
+  name: waspfiles
 spec:
   location: southamerica-east1
 
@@ -10,6 +10,6 @@ spec:
 apiVersion: azure.storage.silvios.me/v1alpha1
 kind: Bucket
 metadata:
-  name: wasp-videos
+  name: waspvideos
 spec:
   location: centralus
