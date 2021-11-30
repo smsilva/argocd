@@ -1,5 +1,6 @@
 source:
   repo: https://github.com/smsilva/argocd.git
+  targetRevision: master
   path: charts
 
 destination:

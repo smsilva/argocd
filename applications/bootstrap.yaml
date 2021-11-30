@@ -12,6 +12,7 @@ spec:
     name: in-cluster
   source:
     repoURL: https://github.com/smsilva/argocd.git
+    targetRevision: master
     path: charts/bootstrap
   syncPolicy:
     automated:

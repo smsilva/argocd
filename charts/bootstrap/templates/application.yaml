@@ -13,6 +13,7 @@ spec:
   project: {{ $application.project | default "default" }}
   source:
     repoURL: {{ $.Values.source.repo }}
+    targetRevision: {{ $.Values.source.targetRevision }}
     path: {{ $application.path | default $.Values.source.path }}/{{ $application.name }}
   destination:
     namespace: {{ $application.namespace }}
