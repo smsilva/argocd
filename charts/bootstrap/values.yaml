@@ -9,9 +9,3 @@ applications:
   - name: terraform-controller
     namespace: default
     wave: -1
-
-  - name: google-bucket
-    namespace: default
-
-#  - name: azure-storage-account
-#    namespace: default
