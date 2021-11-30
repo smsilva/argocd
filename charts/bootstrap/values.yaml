@@ -18,3 +18,6 @@ applications:
   - name: crossplane-compositions
     namespace: default
     wave: 1
+
+  - name: google-bucket
+    namespace: default
