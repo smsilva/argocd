@@ -18,6 +18,3 @@ applications:
   - name: crossplane-compositions
     namespace: default
     wave: 1
-
-  - name: multi-cloud-buckets
-    namespace: default
