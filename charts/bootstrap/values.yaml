@@ -1,6 +1,6 @@
 source:
   repo: https://github.com/smsilva/argocd.git
-  targetRevision: tdc
+  targetRevision: wasp
   path: charts
 
 destination:
@@ -9,12 +9,3 @@ destination:
 applications:
   - name: terraform-controller
     namespace: default
-    wave: 0
-
-  - name: crossplane-crds
-    namespace: default
-    wave: 0
-
-  - name: crossplane-compositions
-    namespace: default
-    wave: 1

@@ -12,7 +12,7 @@ spec:
     name: in-cluster
   source:
     repoURL: https://github.com/smsilva/argocd.git
-    targetRevision: tdc
+    targetRevision: wasp
     path: charts/bootstrap
   syncPolicy:
     automated:
