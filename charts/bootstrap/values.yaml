@@ -10,5 +10,5 @@ applications:
   - name: terraform-controller
     namespace: default
 
-  - name: azure-kubernetes-cluster
-    namespace: default
+  # - name: azure-kubernetes-cluster
+  #   namespace: default
