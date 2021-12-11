@@ -1,0 +1,19 @@
+apiVersion: terraform.silvios.me/v1alpha1
+kind: StackInstance
+metadata:
+  name: wasp-undercloud
+spec:
+  stack:
+    provider: azurerm
+    backend: azurerm
+    registry: docker.io
+    image: silviosilva/azure-undercloud-cluster
+    version: 0.3.0
+  vars:
+    cluster_name: wasp-undercloud
+    cluster_location: eastus2
+    cluster_version: "1.21.2"
+  outputs:
+    - aks_id
+    - aks_kubelet_identity_client_id
+    - kubeconfig
