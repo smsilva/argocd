@@ -10,5 +10,6 @@ applications:
   - name: terraform-controller
     namespace: default
 
-  - name: azure-kubernetes-cluster
-    namespace: default
+  # StackInstance Object + terraform-controller
+  # - name: azure-undercloud-cluster-plain-stack
+  #   namespace: default
