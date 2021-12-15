@@ -16,7 +16,7 @@ spec:
               apiVersion: terraform.silvios.me/v1alpha1
               kind: StackInstance
               metadata:
-                name: wasp-undercloud
+                name: clustername
                 namespace: default
               spec:
                 stack:
@@ -26,7 +26,7 @@ spec:
                   image: silviosilva/azure-undercloud-cluster
                   version: 0.3.0
                 vars:
-                  cluster_name: wasp-undercloud
+                  cluster_name: clustername
                   cluster_location: eastus2
                   cluster_version: "1.21.2"
                 outputs:
@@ -35,6 +35,14 @@ spec:
                   - kubeconfig
 
       patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.metadata.name
+
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.spec.vars.cluster_name
+
         - type: FromCompositeFieldPath
           fromFieldPath: metadata.name
           toFieldPath: spec.forProvider.manifest.metadata.name
@@ -88,15 +96,3 @@ spec:
 
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
-
-    - base:
-        apiVersion: kubernetes.crossplane.io/v1alpha1
-        kind: Object
-        spec:
-          forProvider:
-            manifest:
-              apiVersion: v1
-              kind: Secret
-              metadata:
-                name: azurerm-credentials
-              type: Opaque

@@ -20,8 +20,8 @@ applications:
     wave: 0
 
   # Crossplane Composition + terraform-controller + StackInstance Object
-  # - name: wasp-clusters
-  #   namespace: default
+  - name: wasp-clusters
+    namespace: default
 
   # terraform-controller + StackInstance Object
   # - name: azure-undercloud-cluster-plain-stack
