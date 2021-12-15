@@ -23,8 +23,8 @@ spec:
                   provider: azurerm
                   backend: azurerm
                   registry: docker.io
-                  image: silviosilva/azure-kubernetes-cluster
-                  version: 2.1.2
+                  image: silviosilva/azure-undercloud-cluster
+                  version: 0.3.0
                 vars:
                   cluster_name: wasp-undercloud
                   cluster_location: eastus2
