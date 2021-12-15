@@ -50,22 +50,17 @@ spec:
           forProvider:
             manifest:
               apiVersion: v1
-              kind: ConfigMap
+              kind: Secret
               metadata:
-                name: game-demo
+                name: silvios
                 namespace: default
-              data:
-                player_initial_lives: "3"
+              type: Opaque
       patches:
         - type: FromCompositeFieldPath
-          fromFieldPath: metadata.name
+          fromFieldPath: metadata.uid
           toFieldPath: spec.forProvider.manifest.metadata.name
-          transforms:
-            - type: string
-              string:
-                fmt: "azure-k8s-cluster-%s"
 
-        - fromFieldPath: metadata.uid
-          toFieldPath: spec.forProvider.manifest.data.myuuid
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.data.name
       readinessChecks:
         - type: None
