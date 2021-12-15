@@ -105,6 +105,7 @@ spec:
               kind: Secret
               metadata:
                 name: azurerm-credentials
+                namespace: default
               type: Opaque
 
     - base:
@@ -117,6 +118,7 @@ spec:
               kind: Secret
               metadata:
                 name: azurerm-credentials-crossplane
+                namespace: default
               type: Opaque
       patches:
         - fromFieldPath: metadata.name
