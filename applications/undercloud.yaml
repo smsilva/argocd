@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/smsilva/argocd.git
     targetRevision: wasp
-    path: bootstrap
+    path: charts/undercloud
   syncPolicy:
     automated:
       prune: true

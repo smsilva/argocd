@@ -1,7 +1,7 @@
 source:
   repo: https://github.com/smsilva/argocd.git
   targetRevision: wasp
-  path: charts
+  path: charts/common
 
 destination:
   cluster: in-cluster

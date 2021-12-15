@@ -88,3 +88,15 @@ spec:
 
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
+
+    - base:
+        apiVersion: kubernetes.crossplane.io/v1alpha1
+        kind: Object
+        spec:
+          forProvider:
+            manifest:
+              apiVersion: v1
+              kind: Secret
+              metadata:
+                name: azurerm-credentials
+              type: Opaque
