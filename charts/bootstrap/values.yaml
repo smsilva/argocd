@@ -9,8 +9,13 @@ destination:
 applications:
   - name: terraform-controller
     namespace: default
+    wave: 0
 
   - name: wasp-base
+    namespace: default
+    wave: 0
+
+  - name: wasp-clusters
     namespace: default
 
   # StackInstance Object + terraform-controller
