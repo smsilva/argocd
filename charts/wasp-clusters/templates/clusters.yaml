@@ -1,0 +1,6 @@
+apiVersion: kubernetes.silvios.me/v1alpha1
+kind: Cluster
+metadata:
+  name: wasp-undercloud
+spec:
+  region: eastus2
