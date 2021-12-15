@@ -116,7 +116,7 @@ spec:
               apiVersion: v1
               kind: Secret
               metadata:
-                name: azurerm-credentials
+                name: azurerm-credentials-crossplane
               type: Opaque
       patches:
         - fromFieldPath: metadata.name
