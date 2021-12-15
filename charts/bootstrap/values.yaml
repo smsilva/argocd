@@ -15,8 +15,8 @@ applications:
     namespace: default
     wave: 0
 
-  - name: wasp-clusters
-    namespace: default
+  # - name: wasp-clusters
+  #   namespace: default
 
   # StackInstance Object + terraform-controller
   # - name: azure-undercloud-cluster-plain-stack
