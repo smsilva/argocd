@@ -10,6 +10,9 @@ applications:
   - name: terraform-controller
     namespace: default
 
+  - name: wasp-base
+    namespace: default
+
   # StackInstance Object + terraform-controller
   # - name: azure-undercloud-cluster-plain-stack
   #   namespace: default
