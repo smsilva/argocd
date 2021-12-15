@@ -44,23 +44,23 @@ spec:
                 fmt: "azure-k8s-cluster-%s"
 
     - base:
-        apiVersion: kubernetes.crossplane.io/v1alpha1
-        kind: Object
+        apiVersion: helm.crossplane.io/v1beta1
+        kind: ProviderConfig
         spec:
-          forProvider:
-            manifest:
-              apiVersion: v1
-              kind: Secret
-              metadata:
-                name: silvios
-                namespace: default
-              type: Opaque
+          credentials:
+            source: Secret
+            secretRef:
+              namespace: default
+              key: kubeconfig
       patches:
-        - type: FromCompositeFieldPath
-          fromFieldPath: metadata.uid
-          toFieldPath: spec.forProvider.manifest.metadata.name
+        - fromFieldPath: metadata.name
+          toFieldPath: metadata.name
 
         - fromFieldPath: metadata.name
-          toFieldPath: spec.forProvider.manifest.data.name
+          toFieldPath: spec.credentials.secretRef.name
+          transforms:
+            - type: string
+              string:
+                fmt: "azure-k8s-cluster-%s"
       readinessChecks:
         - type: None
