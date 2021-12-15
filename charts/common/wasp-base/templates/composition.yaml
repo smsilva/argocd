@@ -16,7 +16,6 @@ spec:
               apiVersion: terraform.silvios.me/v1alpha1
               kind: StackInstance
               metadata:
-                name: clustername
                 namespace: default
               spec:
                 stack:
@@ -26,7 +25,6 @@ spec:
                   image: silviosilva/azure-undercloud-cluster
                   version: 0.3.0
                 vars:
-                  cluster_name: clustername
                   cluster_location: eastus2
                   cluster_version: "1.21.2"
                 outputs:
