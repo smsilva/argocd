@@ -1,0 +1,44 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: clusters.kubernetes.silvios.me
+spec:
+  compositeTypeRef:
+    apiVersion: kubernetes.silvios.me/v1alpha1
+    kind: Cluster
+  resources:
+    - base:
+        apiVersion: kubernetes.crossplane.io/v1alpha1
+        kind: Object
+        spec:
+          forProvider:
+            manifest:
+              apiVersion: terraform.silvios.me/v1alpha1
+              kind: StackInstance
+              metadata:
+                name: wasp-undercloud
+                namespace: default
+              spec:
+                stack:
+                  provider: azurerm
+                  backend: azurerm
+                  registry: docker.io
+                  image: silviosilva/azure-kubernetes-cluster
+                  version: 2.1.2
+                vars:
+                  cluster_name: wasp-undercloud
+                  cluster_location: eastus2
+                  cluster_version: "1.21.2"
+                outputs:
+                  - aks_id
+                  - aks_kubelet_identity_client_id
+                  - kubeconfig
+
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.metadata.name
+          transforms:
+            - type: string
+              string:
+                fmt: "azure-k8s-cluster-%s"
