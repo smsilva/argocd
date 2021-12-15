@@ -64,3 +64,27 @@ spec:
                 fmt: "azure-k8s-cluster-%s"
       readinessChecks:
         - type: None
+
+    - base:
+        apiVersion: helm.crossplane.io/v1beta1
+        kind: Release
+        metadata:
+          name: argocd
+        spec:
+          forProvider:
+            chart:
+              name: argo-cd
+              repository: https://argoproj.github.io/argo-helm
+              version: 3.13.0
+            namespace: argocd
+            wait: true
+            values:
+              server:
+                service:
+                  type: ClusterIP
+      patches:
+        - fromFieldPath: metadata.name
+          toFieldPath: metadata.name
+
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.providerConfigRef.name
