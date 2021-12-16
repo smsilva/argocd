@@ -26,6 +26,7 @@ spec:
                   version: 0.3.1
                 vars:
                   cluster_name: wasp-cluster
+                  cluster_location: eastus2
                   cluster_version: "1.21.2"
                 outputs:
                   - aks_id
