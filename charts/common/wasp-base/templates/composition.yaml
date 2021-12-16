@@ -42,6 +42,10 @@ spec:
           fromFieldPath: metadata.name
           toFieldPath: spec.forProvider.manifest.spec.vars.cluster_name
 
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.spec.region
+          toFieldPath: spec.forProvider.manifest.spec.vars.cluster_location
+
     - base:
         apiVersion: helm.crossplane.io/v1beta1
         kind: ProviderConfig
