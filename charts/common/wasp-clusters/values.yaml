@@ -10,5 +10,7 @@ apiVersion: kubernetes.silvios.me/v1alpha1
 kind: Cluster
 metadata:
   name: wasp-global-2
+  annotations:
+    foo: bar
 spec:
   region: centralus
