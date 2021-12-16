@@ -1,0 +1,7 @@
+---
+apiVersion: storage.silvios.me/v1alpha1
+kind: Bucket
+metadata:
+  name: wasp-files
+spec:
+  region: southamerica-east1

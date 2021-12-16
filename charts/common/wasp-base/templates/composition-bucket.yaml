@@ -1,0 +1,48 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: buckets.storage.silvios.me
+spec:
+  compositeTypeRef:
+    apiVersion: storage.silvios.me/v1alpha1
+    kind: Bucket
+  resources:
+    - base:
+        apiVersion: kubernetes.crossplane.io/v1alpha1
+        kind: Object
+        spec:
+          forProvider:
+            manifest:
+              apiVersion: terraform.silvios.me/v1alpha1
+              kind: StackInstance
+              metadata:
+                name: wasp-files-2
+                namespace: default
+              spec:
+                stack:
+                  provider: google
+                  backend: gcs
+                  registry: docker.io
+                  image: silviosilva/google-bucket
+                  version: edge
+                vars:
+                  name: wasp-files-2
+                  location: southamerica-east1
+                outputs:
+                  - id
+                  - self_link
+                  - url
+                  - project
+
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.metadata.name
+
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.spec.vars.name
+
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.spec.region
+          toFieldPath: spec.forProvider.manifest.spec.vars.location
