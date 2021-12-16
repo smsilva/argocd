@@ -23,7 +23,7 @@ spec:
                   backend: azurerm
                   registry: docker.io
                   image: silviosilva/azure-kubernetes-cluster
-                  version: 0.3.0
+                  version: 0.3.1
                 vars:
                   cluster_name: wasp-cluster
                   cluster_location: eastus2
