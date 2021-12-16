@@ -101,3 +101,6 @@ spec:
                 name: azurerm-credentials-test
                 namespace: default
               type: Opaque
+      patches:
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.providerConfigRef.name
