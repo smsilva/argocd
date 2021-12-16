@@ -43,7 +43,7 @@ spec:
           toFieldPath: spec.forProvider.manifest.spec.vars.cluster_name
 
         - type: FromCompositeFieldPath
-          fromFieldPath: metadata.spec.region
+          fromFieldPath: metadata.name
           toFieldPath: spec.forProvider.manifest.spec.vars.cluster_location
 
     - base:
