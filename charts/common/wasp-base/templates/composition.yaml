@@ -57,10 +57,7 @@ spec:
 
         - fromFieldPath: metadata.name
           toFieldPath: spec.credentials.secretRef.name
-          transforms:
-            - type: string
-              string:
-                fmt: "azure-k8s-cluster-%s"
+
       readinessChecks:
         - type: None
 
@@ -103,10 +100,7 @@ spec:
 
         - fromFieldPath: metadata.name
           toFieldPath: spec.credentials.secretRef.name
-          transforms:
-            - type: string
-              string:
-                fmt: "azure-k8s-cluster-%s"
+
       readinessChecks:
         - type: None
 
