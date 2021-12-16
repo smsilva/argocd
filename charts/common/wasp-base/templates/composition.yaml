@@ -16,17 +16,16 @@ spec:
               apiVersion: terraform.silvios.me/v1alpha1
               kind: StackInstance
               metadata:
-                name: wasp-undercloud
                 namespace: default
               spec:
                 stack:
                   provider: azurerm
                   backend: azurerm
                   registry: docker.io
-                  image: silviosilva/azure-undercloud-cluster
+                  image: silviosilva/azure-kubernetes-cluster
                   version: 0.3.0
                 vars:
-                  cluster_name: wasp-undercloud
+                  cluster_name: wasp-cluster
                   cluster_location: eastus2
                   cluster_version: "1.21.2"
                 outputs:
@@ -38,10 +37,10 @@ spec:
         - type: FromCompositeFieldPath
           fromFieldPath: metadata.name
           toFieldPath: spec.forProvider.manifest.metadata.name
-          transforms:
-            - type: string
-              string:
-                fmt: "azure-k8s-cluster-%s"
+
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.spec.vars.cluster_name
 
     - base:
         apiVersion: helm.crossplane.io/v1beta1
