@@ -1,0 +1,12 @@
+source:
+  repo: https://github.com/smsilva/argocd.git
+  targetRevision: wasp
+  path: charts/common
+
+destination:
+  cluster: in-cluster
+
+applications:
+  - name: external-secrets
+    namespace: default
+    wave: 0
