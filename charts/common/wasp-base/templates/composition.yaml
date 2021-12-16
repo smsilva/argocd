@@ -90,6 +90,28 @@ spec:
           toFieldPath: spec.providerConfigRef.name
 
     - base:
+        apiVersion: kubernetes.crossplane.io/v1beta1
+        kind: ProviderConfig
+        spec:
+          credentials:
+            source: Secret
+            secretRef:
+              namespace: default
+              key: kubeconfig
+      patches:
+        - fromFieldPath: metadata.name
+          toFieldPath: metadata.name
+
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.credentials.secretRef.name
+          transforms:
+            - type: string
+              string:
+                fmt: "azure-k8s-cluster-%s"
+      readinessChecks:
+        - type: None
+
+    - base:
         apiVersion: kubernetes.crossplane.io/v1alpha1
         kind: Object
         spec:
@@ -101,6 +123,3 @@ spec:
                 name: azurerm-credentials-test
                 namespace: default
               type: Opaque
-      patches:
-        - fromFieldPath: metadata.name
-          toFieldPath: spec.providerConfigRef.name
