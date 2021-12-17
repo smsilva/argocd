@@ -16,7 +16,6 @@ spec:
               apiVersion: terraform.silvios.me/v1alpha1
               kind: StackInstance
               metadata:
-                name: wasp-files-2
                 namespace: default
               spec:
                 stack:
@@ -36,12 +35,12 @@ spec:
 
       patches:
         - type: FromCompositeFieldPath
-          fromFieldPath: metadata.name
-          toFieldPath: spec.forProvider.manifest.spec.vars.name
-
-        - type: FromCompositeFieldPath
           fromFieldPath: metadata.spec.region
           toFieldPath: spec.forProvider.manifest.spec.vars.location
+
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.spec.vars.name
 
         - type: FromCompositeFieldPath
           fromFieldPath: metadata.name
