@@ -19,12 +19,12 @@ applications:
     namespace: default
     wave: 1
 
-  # - name: wasp-base
-  #   namespace: default
-  #   wave: 0
+  - name: wasp-base
+    namespace: default
+    wave: 0
 
-  # - name: wasp-buckets
-  #   namespace: default
+  - name: wasp-buckets
+    namespace: default
 
   # - name: wasp-clusters
   #   namespace: default
