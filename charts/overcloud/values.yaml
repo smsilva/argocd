@@ -7,10 +7,18 @@ destination:
   cluster: in-cluster
 
 applications:
+  - name: terraform-controller
+    namespace: default
+    wave: 0
+
   - name: external-secrets
     namespace: default
     wave: 0
 
+  - name: kustomize
+    namespace: default
+    wave: 1
+
   - name: wasp-base
     namespace: default
-    wave: 0
+    wave: 1
