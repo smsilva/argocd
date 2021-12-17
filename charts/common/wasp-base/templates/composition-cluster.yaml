@@ -89,6 +89,25 @@ spec:
           toFieldPath: spec.providerConfigRef.name
 
     - base:
+        apiVersion: helm.crossplane.io/v1beta1
+        kind: Release
+        metadata:
+          name: crossplane
+        spec:
+          forProvider:
+            chart:
+              name: base
+              repository: https://charts.crossplane.io/stable
+              version: 1.5.1
+            namespace: crossplane-system
+            wait: true
+            skipCreateNamespace: false
+
+      patches:
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.providerConfigRef.name
+
+    - base:
         apiVersion: kubernetes.crossplane.io/v1alpha1
         kind: ProviderConfig
         spec:
