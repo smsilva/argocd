@@ -53,6 +53,7 @@ spec:
             - type: string
               string:
                 fmt: "status-%s*"
+
       readinessChecks:
         - type: MatchString
           fieldPath: status.atProvider.manifest.status.message

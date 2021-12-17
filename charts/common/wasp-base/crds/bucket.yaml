@@ -25,4 +25,8 @@ spec:
               required:
                 - region
 
-            status: {}
+            status:
+              type: object
+              properties:
+                message:
+                  type: string
