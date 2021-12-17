@@ -21,10 +21,10 @@ applications:
 
   - name: wasp-base
     namespace: default
-    wave: 0
+    wave: 1
 
-  - name: wasp-buckets
-    namespace: default
-
-  # - name: wasp-clusters
+  # - name: wasp-buckets
   #   namespace: default
+
+  - name: wasp-clusters
+    namespace: default
