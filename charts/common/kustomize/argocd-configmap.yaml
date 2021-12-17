@@ -52,7 +52,7 @@ data:
       if obj.status.conditions ~= nil then
         for i, condition in ipairs(obj.status.conditions) do
           if condition.type == "Ready" and condition.status == "False" then
-            hs.status = "Degraded"
+            hs.status = "Progressing"
             hs.message = condition.message
             return hs
           end
@@ -74,7 +74,7 @@ data:
       if obj.status.conditions ~= nil then
         for i, condition in ipairs(obj.status.conditions) do
           if condition.type == "Ready" and condition.status == "False" then
-            hs.status = "Degraded"
+            hs.status = "Progressing"
             hs.message = condition.message
             return hs
           end
