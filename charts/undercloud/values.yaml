@@ -15,17 +15,16 @@ applications:
     namespace: default
     wave: 0
 
-  - name: wasp-base
-    namespace: default
-    wave: 0
-
   - name: kustomize
     namespace: default
     wave: 1
 
-  - name: wasp-buckets
-    namespace: default
+  # - name: wasp-base
+  #   namespace: default
+  #   wave: 0
 
-  # Crossplane Composition + terraform-controller + StackInstance Object
+  # - name: wasp-buckets
+  #   namespace: default
+
   # - name: wasp-clusters
   #   namespace: default
