@@ -37,12 +37,12 @@ spec:
       patches:
         - type: FromCompositeFieldPath
           fromFieldPath: metadata.name
-          toFieldPath: spec.forProvider.manifest.metadata.name
-
-        - type: FromCompositeFieldPath
-          fromFieldPath: metadata.name
           toFieldPath: spec.forProvider.manifest.spec.vars.name
 
         - type: FromCompositeFieldPath
           fromFieldPath: metadata.spec.region
           toFieldPath: spec.forProvider.manifest.spec.vars.location
+
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.metadata.name
