@@ -12,3 +12,10 @@ metadata:
   name: wasp-photos
 spec:
   region: southamerica-west1
+---
+apiVersion: storage.silvios.me/v1alpha1
+kind: Bucket
+metadata:
+  name: wasp-documents
+spec:
+  region: southamerica-east1

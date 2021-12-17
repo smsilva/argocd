@@ -45,3 +45,8 @@ spec:
         - type: FromCompositeFieldPath
           fromFieldPath: metadata.name
           toFieldPath: spec.forProvider.manifest.metadata.name
+
+      readinessChecks:
+        - type: MatchString
+          fieldPath: status.atProvider.manifest.status.message
+          matchString: "HEALTHY"
