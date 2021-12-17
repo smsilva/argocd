@@ -19,3 +19,10 @@ metadata:
   name: wasp-documents
 spec:
   region: southamerica-east1
+---
+apiVersion: storage.silvios.me/v1alpha1
+kind: Bucket
+metadata:
+  name: wasp-documents-2
+spec:
+  region: southamerica-east1
