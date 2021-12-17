@@ -46,6 +46,10 @@ spec:
           fromFieldPath: metadata.name
           toFieldPath: spec.forProvider.manifest.metadata.name
 
+        - fromFieldPath: "status.atProvider.manifest.status.message"
+          toFieldPath: "status.bucket.message"
+          type: ToCompositeFieldPath
+
       readinessChecks:
         - type: MatchString
           fieldPath: status.atProvider.manifest.status.message
