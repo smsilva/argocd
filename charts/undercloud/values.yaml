@@ -19,8 +19,8 @@ applications:
     namespace: default
     wave: 0
 
-  # - name: wasp-buckets
-  #   namespace: default
+  - name: wasp-buckets
+    namespace: default
 
   # Crossplane Composition + terraform-controller + StackInstance Object
   # - name: wasp-clusters
