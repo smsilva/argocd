@@ -24,3 +24,5 @@ spec:
                   type: string
               required:
                 - region
+
+            status: {}
