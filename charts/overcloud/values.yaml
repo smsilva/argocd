@@ -10,3 +10,7 @@ applications:
   - name: external-secrets
     namespace: default
     wave: 0
+
+  - name: wasp-base
+    namespace: default
+    wave: 0

@@ -1,7 +1,7 @@
-# ---
-# apiVersion: kubernetes.silvios.me/v1alpha1
-# kind: Cluster
-# metadata:
-#   name: wasp-global-1
-# spec:
-#   region: centralus
+---
+apiVersion: kubernetes.silvios.me/v1alpha1
+kind: Cluster
+metadata:
+  name: wasp-global-1
+spec:
+  region: centralus

@@ -70,6 +70,8 @@ spec:
         kind: Release
         metadata:
           name: argocd
+          annotations: 
+            crossplane.io/external-name: argocd
         spec:
           forProvider:
             chart:
@@ -83,9 +85,6 @@ spec:
                 service:
                   type: ClusterIP
       patches:
-        - fromFieldPath: metadata.name
-          toFieldPath: metadata.name
-
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
 
