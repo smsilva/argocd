@@ -96,7 +96,7 @@ spec:
         spec:
           forProvider:
             chart:
-              name: base
+              name: crossplane
               repository: https://charts.crossplane.io/stable
               version: 1.5.1
             namespace: crossplane-system
