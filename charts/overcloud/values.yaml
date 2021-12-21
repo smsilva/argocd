@@ -26,3 +26,7 @@ applications:
   - name: crossplane-providers
     namespace: crossplane-system
     wave: 3
+
+  - name: istio-base
+    namespace: default
+    wave: 4
