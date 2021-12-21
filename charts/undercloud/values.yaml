@@ -26,5 +26,5 @@ applications:
   # - name: wasp-buckets
   #   namespace: default
 
-  # - name: wasp-clusters
-  #   namespace: default
+  - name: wasp-clusters
+    namespace: default
