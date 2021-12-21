@@ -18,3 +18,7 @@ applications:
   - name: wasp-base
     namespace: default
     wave: 1
+
+  - name: crossplane-providers
+    namespace: crossplane-system
+    wave: 2
