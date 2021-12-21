@@ -23,6 +23,6 @@ applications:
     namespace: crossplane-system
     wave: 2
 
-  # - name: crossplane-providers
-  #   namespace: crossplane-system
-  #   wave: 2
+  - name: crossplane-providers
+    namespace: crossplane-system
+    wave: 3
