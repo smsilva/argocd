@@ -7,10 +7,6 @@ destination:
   cluster: in-cluster
 
 applications:
-  - name: terraform-controller
-    namespace: default
-    wave: 0
-
   - name: external-secrets
     namespace: default
     wave: 0
@@ -26,5 +22,5 @@ applications:
   # - name: wasp-buckets
   #   namespace: default
 
-  - name: wasp-clusters
-    namespace: default
+  # - name: wasp-clusters
+  #   namespace: default
