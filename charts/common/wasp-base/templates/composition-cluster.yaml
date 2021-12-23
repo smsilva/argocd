@@ -120,13 +120,6 @@ spec:
               server:
                 service:
                   type: ClusterIP
-            set: 
-              - name: externalDatabase.host
-                valueFrom: 
-                  secretKeyRef: 
-                    name: 
-                    namespace: crossplane-system
-                    key: endpoint
       patches:
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
