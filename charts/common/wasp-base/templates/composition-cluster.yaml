@@ -100,7 +100,7 @@ spec:
             chart:
               name: terraform-controller
               repository: https://smsilva.github.io/helm
-              version: 0.1.4
+              version: 0.1.5
             namespace: default
             wait: true
             set: 
@@ -117,6 +117,20 @@ spec:
                     name: azurerm-credentials
                     namespace: default
                     key: ARM_CLIENT_SECRET
+
+              - name: secrets.azurerm.data.tenantId
+                valueFrom: 
+                  secretKeyRef: 
+                    name: azurerm-credentials
+                    namespace: default
+                    key: ARM_TENANT_ID
+
+              - name: secrets.azurerm.data.keyVaultName
+                valueFrom: 
+                  secretKeyRef: 
+                    name: azurerm-credentials
+                    namespace: default
+                    key: ARM_KEYVAULT_NAME
       patches:
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
