@@ -130,6 +130,8 @@ spec:
         kind: Release
         metadata:
           name: crossplane
+          annotations: 
+            crossplane.io/external-name: crossplane
         spec:
           forProvider:
             chart:
