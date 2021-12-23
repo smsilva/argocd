@@ -155,6 +155,40 @@ spec:
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
 
+    - name: overcloud-secret-store
+      base:
+        apiVersion: helm.crossplane.io/v1beta1
+        kind: Release
+        metadata:
+          name: secret-store
+          annotations: 
+            crossplane.io/external-name: secret-store
+        spec:
+          forProvider:
+            chart:
+              name: external-secrets
+              repository: https://smsilva.github.io/helm
+              version: 0.1.0
+            namespace: default
+            wait: true
+            set: 
+              - name: azurekv.tenantId
+                valueFrom: 
+                  secretKeyRef: 
+                    name: azurerm-credentials
+                    namespace: default
+                    key: ARM_TENANT_ID
+
+              - name: azurekv.keyVaultName
+                valueFrom: 
+                  secretKeyRef: 
+                    name: azurerm-credentials
+                    namespace: default
+                    key: ARM_KEYVAULT_NAME
+      patches:
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.providerConfigRef.name
+
     - name: overcloud-crossplane
       base:
         apiVersion: helm.crossplane.io/v1beta1
