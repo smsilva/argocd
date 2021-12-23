@@ -22,3 +22,7 @@ applications:
   - name: crossplane-providers
     namespace: crossplane-system
     wave: 3
+
+  - name: wasp-secrets
+    namespace: default
+    wave: 4
