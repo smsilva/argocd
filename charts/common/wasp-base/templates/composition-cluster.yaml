@@ -7,7 +7,8 @@ spec:
     apiVersion: kubernetes.silvios.me/v1alpha1
     kind: Cluster
   resources:
-    - base:
+    - name: overcloud-aks-cluster
+      base: 
         apiVersion: kubernetes.crossplane.io/v1alpha1
         kind: Object
         spec:
@@ -46,7 +47,8 @@ spec:
           fromFieldPath: metadata.name
           toFieldPath: spec.forProvider.manifest.metadata.name
 
-    - base:
+    - name: overcloud-provider-config-helm
+      base:
         apiVersion: helm.crossplane.io/v1beta1
         kind: ProviderConfig
         spec:
@@ -65,7 +67,41 @@ spec:
       readinessChecks:
         - type: None
 
-    - base:
+    - name: overcloud-terraform-controller
+      base:
+        apiVersion: helm.crossplane.io/v1beta1
+        kind: Release
+        metadata:
+          name: terraform-controller
+          annotations: 
+            crossplane.io/external-name: terraform-controller
+        spec:
+          forProvider:
+            chart:
+              name: terraform-controller
+              repository: https://smsilva.github.io/helm
+              version: 0.1.4
+            namespace: default
+            wait: true
+            set: 
+              - name: secrets.azurerm.data.clientId
+                valueFrom: 
+                  secretKeyRef: 
+                    name: azurerm-credentials
+                    namespace: default
+                    key: ARM_CLIENT_ID
+              - name: secrets.azurerm.data.clientId
+                valueFrom: 
+                  secretKeyRef: 
+                    name: azurerm-credentials
+                    namespace: default
+                    key: ARM_CLIENT_SECRET
+      patches:
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.providerConfigRef.name
+
+    - name: overcloud-argocd
+      base:
         apiVersion: helm.crossplane.io/v1beta1
         kind: Release
         metadata:
@@ -84,11 +120,19 @@ spec:
               server:
                 service:
                   type: ClusterIP
+            set: 
+              - name: externalDatabase.host
+                valueFrom: 
+                  secretKeyRef: 
+                    name: 
+                    namespace: crossplane-system
+                    key: endpoint
       patches:
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
 
-    - base:
+    - name: overcloud-crossplane
+      base:
         apiVersion: helm.crossplane.io/v1beta1
         kind: Release
         metadata:
@@ -107,7 +151,8 @@ spec:
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
 
-    - base:
+    - name: overcloud-provider-config-kubernetes
+      base:
         apiVersion: kubernetes.crossplane.io/v1alpha1
         kind: ProviderConfig
         spec:
@@ -126,7 +171,8 @@ spec:
       readinessChecks:
         - type: None
 
-    - base:
+    - name: overcloud-argocd-application
+      base:
         apiVersion: kubernetes.crossplane.io/v1alpha1
         kind: Object
         spec:

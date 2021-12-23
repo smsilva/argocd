@@ -19,8 +19,5 @@ applications:
     namespace: default
     wave: 1
 
-  # - name: wasp-buckets
-  #   namespace: default
-
-  # - name: wasp-clusters
-  #   namespace: default
+  - name: wasp-clusters
+    namespace: default
