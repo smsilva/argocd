@@ -67,6 +67,26 @@ spec:
       readinessChecks:
         - type: None
 
+    - name: overcloud-provider-config-kubernetes
+      base:
+        apiVersion: kubernetes.crossplane.io/v1alpha1
+        kind: ProviderConfig
+        spec:
+          credentials:
+            source: Secret
+            secretRef:
+              namespace: default
+              key: kubeconfig
+      patches:
+        - fromFieldPath: metadata.name
+          toFieldPath: metadata.name
+
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.credentials.secretRef.name
+
+      readinessChecks:
+        - type: None
+
     - name: overcloud-terraform-controller
       base:
         apiVersion: helm.crossplane.io/v1beta1
@@ -101,6 +121,28 @@ spec:
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
 
+    - name: overcloud-crossplane
+      base:
+        apiVersion: helm.crossplane.io/v1beta1
+        kind: Release
+        metadata:
+          name: crossplane
+          annotations: 
+            crossplane.io/external-name: crossplane
+        spec:
+          forProvider:
+            chart:
+              name: crossplane
+              repository: https://charts.crossplane.io/stable
+              version: 1.5.1
+            namespace: crossplane-system
+            wait: true
+            skipCreateNamespace: false
+
+      patches:
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.providerConfigRef.name
+
     - name: overcloud-argocd
       base:
         apiVersion: helm.crossplane.io/v1beta1
@@ -124,48 +166,6 @@ spec:
       patches:
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
-
-    - name: overcloud-crossplane
-      base:
-        apiVersion: helm.crossplane.io/v1beta1
-        kind: Release
-        metadata:
-          name: crossplane
-          annotations: 
-            crossplane.io/external-name: crossplane
-        spec:
-          forProvider:
-            chart:
-              name: crossplane
-              repository: https://charts.crossplane.io/stable
-              version: 1.5.1
-            namespace: crossplane-system
-            wait: true
-            skipCreateNamespace: false
-
-      patches:
-        - fromFieldPath: metadata.name
-          toFieldPath: spec.providerConfigRef.name
-
-    - name: overcloud-provider-config-kubernetes
-      base:
-        apiVersion: kubernetes.crossplane.io/v1alpha1
-        kind: ProviderConfig
-        spec:
-          credentials:
-            source: Secret
-            secretRef:
-              namespace: default
-              key: kubeconfig
-      patches:
-        - fromFieldPath: metadata.name
-          toFieldPath: metadata.name
-
-        - fromFieldPath: metadata.name
-          toFieldPath: spec.credentials.secretRef.name
-
-      readinessChecks:
-        - type: None
 
     - name: overcloud-argocd-application
       base:
