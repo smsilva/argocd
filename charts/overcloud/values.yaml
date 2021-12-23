@@ -11,10 +11,6 @@ applications:
     namespace: default
     wave: 0
 
-  - name: external-secrets
-    namespace: default
-    wave: 1
-
   - name: wasp-base
     namespace: default
     wave: 1

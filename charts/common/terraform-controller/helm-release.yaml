@@ -7,6 +7,6 @@ spec:
     chart:
       name: terraform-controller
       repository: https://smsilva.github.io/helm
-      version: 0.1.3
+      version: 0.1.5
     namespace: default
     wait: true

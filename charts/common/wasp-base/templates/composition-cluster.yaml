@@ -135,6 +135,26 @@ spec:
         - fromFieldPath: metadata.name
           toFieldPath: spec.providerConfigRef.name
 
+    - name: overcloud-external-secrets
+      base:
+        apiVersion: helm.crossplane.io/v1beta1
+        kind: Release
+        metadata:
+          name: external-secrets
+          annotations: 
+            crossplane.io/external-name: external-secrets
+        spec:
+          forProvider:
+            chart:
+              name: external-secrets
+              repository: https://charts.external-secrets.io
+              version: 0.3.10
+            namespace: external-secrets
+            wait: true
+      patches:
+        - fromFieldPath: metadata.name
+          toFieldPath: spec.providerConfigRef.name
+
     - name: overcloud-crossplane
       base:
         apiVersion: helm.crossplane.io/v1beta1
