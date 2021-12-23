@@ -5,6 +5,5 @@ generatorOptions:
   disableNameSuffixHash: true
 
 resources:
-  - argo-rollouts.yaml
   - argocd-configmap.yaml
   - default.yaml

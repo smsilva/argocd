@@ -4,4 +4,4 @@ kind: Cluster
 metadata:
   name: wasp-global-1
 spec:
-  region: centralus
+  region: eastus2
