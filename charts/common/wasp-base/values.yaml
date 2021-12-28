@@ -1,0 +1,8 @@
+helm:
+  versions:
+     stackAksCluster: 0.3.1
+     terraformController: 0.1.5
+     externalSecrets: 0.3.10
+     externalSecretsSmsilva: 0.1.0
+     crossplane: 1.5.1
+     argocd: 3.13.0

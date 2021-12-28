@@ -24,7 +24,7 @@ spec:
                   backend: azurerm
                   registry: docker.io
                   image: silviosilva/azure-kubernetes-cluster
-                  version: 0.3.1
+                  version: {{ .Values.helm.versions.stackAksCluster }}
                 vars:
                   cluster_name: "wasp-cluster"
                   cluster_location: "eastus2"
@@ -100,7 +100,7 @@ spec:
             chart:
               name: terraform-controller
               repository: https://smsilva.github.io/helm
-              version: 0.1.5
+              version: {{ .Values.helm.versions.terraformController }}
             namespace: default
             wait: true
             set: 
@@ -148,7 +148,7 @@ spec:
             chart:
               name: external-secrets
               repository: https://charts.external-secrets.io
-              version: 0.3.10
+              version: {{ .Values.helm.versions.externalSecrets }}
             namespace: external-secrets
             wait: true
       patches:
@@ -168,7 +168,7 @@ spec:
             chart:
               name: external-secrets
               repository: https://smsilva.github.io/helm
-              version: 0.1.0
+              version: {{ .Values.helm.versions.externalSecretsSmsilva }}
             namespace: default
             wait: true
             set: 
@@ -202,7 +202,7 @@ spec:
             chart:
               name: crossplane
               repository: https://charts.crossplane.io/stable
-              version: 1.5.1
+              version: {{ .Values.helm.versions.crossplane }}
             namespace: crossplane-system
             wait: true
             skipCreateNamespace: false
@@ -224,7 +224,7 @@ spec:
             chart:
               name: argo-cd
               repository: https://argoproj.github.io/argo-helm
-              version: 3.13.0
+              version: {{ .Values.helm.versions.argocd }}
             namespace: argocd
             wait: true
             values:
