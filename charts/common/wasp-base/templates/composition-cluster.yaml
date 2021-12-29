@@ -95,6 +95,7 @@ spec:
           name: terraform-controller
           annotations: 
             crossplane.io/external-name: terraform-controller
+            foo: bar
         spec:
           forProvider:
             chart:
