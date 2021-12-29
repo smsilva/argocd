@@ -14,6 +14,30 @@ spec:
     creationPolicy: Owner
 
   data:
+  - secretKey: ARM_TENANT_ID
+    remoteRef:
+      key: secret/arm-tenant-id
+
+  - secretKey: ARM_SUBSCRIPTION_ID
+    remoteRef:
+      key: secret/arm-subscription-id
+
+  - secretKey: ARM_CLIENT_ID
+    remoteRef:
+      key: secret/arm-client-id
+
+  - secretKey: ARM_CLIENT_SECRET
+    remoteRef:
+      key: secret/arm-client-secret
+
+  - secretKey: ARM_STORAGE_ACCOUNT_NAME
+    remoteRef:
+      key: secret/arm-storage-account-name
+
+  - secretKey: ARM_STORAGE_ACCOUNT_CONTAINER_NAME
+    remoteRef:
+      key: secret/arm-storage-account-container-name
+
   - secretKey: ARM_ACCESS_KEY
     remoteRef:
-      key: secret/arm-access-key-terraform
+      key: secret/arm-access-key
