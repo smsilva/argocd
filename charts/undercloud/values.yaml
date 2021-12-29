@@ -11,17 +11,17 @@ applications:
     namespace: default
     wave: 0
 
-  - name: external-secrets
-    namespace: default
-    wave: 1
+  # - name: external-secrets
+  #   namespace: default
+  #   wave: 1
 
-  - name: kustomize
-    namespace: default
-    wave: 2
+  # - name: kustomize
+  #   namespace: default
+  #   wave: 2
 
-  - name: wasp-base
-    namespace: default
-    wave: 3
+  # - name: wasp-base
+  #   namespace: default
+  #   wave: 3
 
-  - name: wasp-clusters
-    namespace: default
+  # - name: wasp-clusters
+  #   namespace: default
