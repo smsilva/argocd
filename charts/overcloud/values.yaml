@@ -15,11 +15,11 @@ applications:
     namespace: default
     wave: 1
 
-  - name: crossplane-base
+  - name: crossplane-providers
     namespace: crossplane-system
     wave: 2
 
-  - name: crossplane-providers
+  - name: crossplane-config
     namespace: crossplane-system
     wave: 3
 
