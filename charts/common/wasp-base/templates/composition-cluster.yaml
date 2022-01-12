@@ -28,7 +28,7 @@ spec:
                 vars:
                   cluster_name: "wasp-cluster"
                   cluster_location: "eastus2"
-                  cluster_version: "1.21.2"
+                  cluster_version: "1.21.7"
                 outputs:
                   - aks_id
                   - aks_kubelet_identity_client_id
