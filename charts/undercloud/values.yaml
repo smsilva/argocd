@@ -19,5 +19,5 @@ applications:
     namespace: default
     wave: 2
 
-  - name: wasp-clusters
-    namespace: default
+  # - name: wasp-clusters
+  #   namespace: default
