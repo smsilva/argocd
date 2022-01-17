@@ -161,7 +161,7 @@ spec:
         kind: Release
         metadata:
           name: secret-store
-          annotations: 
+          annotations:
             crossplane.io/external-name: secret-store
         spec:
           forProvider:
