@@ -25,3 +25,5 @@ applications:
   - name: crossplane-providers
     namespace: crossplane
     wave: 0
+    prune: false
+    selfHeal: false
