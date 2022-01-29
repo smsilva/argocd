@@ -23,5 +23,5 @@ applications:
   #   namespace: default
 
   - name: crossplane-providers
-    namespace: default
+    namespace: crossplane
     wave: 0
