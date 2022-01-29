@@ -22,8 +22,8 @@ applications:
   # - name: wasp-clusters
   #   namespace: default
 
-  # - name: crossplane-providers
-  #   namespace: crossplane
-  #   wave: 0
-  #   prune: false
-  #   selfHeal: false
+  - name: crossplane-providers
+    namespace: crossplane
+    wave: 0
+    prune: false
+    selfHeal: false
