@@ -1,5 +1,5 @@
 source:
-  repo: https://github.com/smsilva/argocd.git
+  repo: git@github.com:smsilva/argocd.git
   targetRevision: wasp
   path: charts/common
 
@@ -25,5 +25,7 @@ applications:
   - name: crossplane-providers
     namespace: crossplane
     wave: 0
-    prune: false
-    selfHeal: false
+
+  - name: crossplane-config
+    namespace: crossplane
+    wave: 1

@@ -11,7 +11,7 @@ spec:
     namespace: default
     name: in-cluster
   source:
-    repoURL: https://github.com/smsilva/argocd.git
+    repoURL: git@github.com:smsilva/argocd.git
     targetRevision: wasp
     path: charts/undercloud
   syncPolicy:
