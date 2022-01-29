@@ -7,17 +7,21 @@ destination:
   cluster: in-cluster
 
 applications:
-  - name: terraform-controller
+  # - name: terraform-controller
+  #   namespace: default
+  #   wave: 0
+
+  # - name: kustomize
+  #   namespace: default
+  #   wave: 1
+
+  # - name: wasp-base
+  #   namespace: default
+  #   wave: 2
+
+  # - name: wasp-clusters
+  #   namespace: default
+
+  - name: crossplane-providers
     namespace: default
     wave: 0
-
-  - name: kustomize
-    namespace: default
-    wave: 1
-
-  - name: wasp-base
-    namespace: default
-    wave: 2
-
-  - name: wasp-clusters
-    namespace: default
