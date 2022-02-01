@@ -26,6 +26,6 @@ applications:
     namespace: crossplane
     wave: 1
 
-  - name: terraform-controller
-    namespace: default
-    wave: 2
+  # - name: terraform-controller
+  #   namespace: default
+  #   wave: 2
