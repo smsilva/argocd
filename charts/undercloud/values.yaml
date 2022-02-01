@@ -7,10 +7,6 @@ destination:
   cluster: in-cluster
 
 applications:
-  # - name: terraform-controller
-  #   namespace: default
-  #   wave: 0
-
   # - name: kustomize
   #   namespace: default
   #   wave: 1
@@ -29,3 +25,7 @@ applications:
   - name: crossplane-config
     namespace: crossplane
     wave: 1
+
+  - name: terraform-controller
+    namespace: default
+    wave: 2
