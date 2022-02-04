@@ -1,0 +1,46 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: teams.mongodbatlas.silvios.me
+spec:
+  compositeTypeRef:
+    apiVersion: mongodbatlas.silvios.me/v1alpha1
+    kind: Team
+  resources:
+    - name: stack_instance_object
+      base: 
+        apiVersion: kubernetes.crossplane.io/v1alpha1
+        kind: Object
+        spec:
+          forProvider:
+            manifest:
+              apiVersion: v1
+              kind: ConfigMap
+              metadata:
+                namespace: default
+              data:
+                DEBUG: "1"
+                STACK_INSTANCE_NAME: mongodbatlas-team-1
+
+                stacks.auto.terraform.tfvars: |
+                  organization_id = "ORGANIZATION_ID"
+                  team_name = "TEAM_NAME"
+                  team_usernames = [ "smsilva@gmail.com", "silvio_silva@msn.com" ]
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.forProvider.manifest.metadata.name
+
+        - type: CombineFromComposite
+          combine:
+            variables:
+              - fromFieldPath: spec.organizationId
+              - fromFieldPath: spec.team.name
+              - fromFieldPath: spec.team.users
+            strategy: string
+            string:
+              fmt: |
+                organization_id = %s
+                team_name = %s
+                users = %+q
+          toFieldPath: "spec.forProvider.manifest.data.stack_tfvars"

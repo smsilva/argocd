@@ -1,0 +1,13 @@
+---
+apiVersion: mongodbatlas.silvios.me/v1alpha1
+kind: Team
+metadata:
+  name: team-1
+  namespace: default
+spec:
+  organizationId: ea1d327fec1e461s
+  team: 
+    name: "Generic_Team_Name_1"
+    users:
+      - foo@bar.com
+      - bar@foo.com

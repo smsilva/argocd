@@ -1,0 +1,53 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: teams.mongodbatlas.silvios.me
+spec:
+  group: mongodbatlas.silvios.me
+  names:
+    kind: Team
+    listKind: TeamList
+    plural: teams
+    singular: team
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          description: A MongoDB Atlas Team
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                organizationId:
+                  type: string
+                  description: Atlas MongoDB Organization ID
+                team:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    users:
+                      type: array
+                      items:
+                        type: string
+                  required:
+                    - name
+              required:
+                - organizationId
+                - team
+
+      additionalPrinterColumns:
+        - jsonPath: .spec.organizationId
+          name: Organization
+          type: string
+
+        - jsonPath: .spec.team.name
+          name: TeamName
+          type: string
+
+        - jsonPath: .spec.team.users
+          name: Users
+          type: string
