@@ -2,12 +2,11 @@
 apiVersion: mongodbatlas.silvios.me/v1alpha1
 kind: Team
 metadata:
-  name: team-1
+  name: atlas-team-example
   namespace: default
 spec:
-  organizationId: ea1d327fec1e461s
+  organizationId: 61c9c79454722979b41e355d
   team: 
-    name: "Generic_Team_Name_1"
+    name: "Atlas_Team_Example"
     users:
       - foo@bar.com
-      - bar@foo.com

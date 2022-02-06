@@ -14,33 +14,39 @@ spec:
         spec:
           forProvider:
             manifest:
-              apiVersion: v1
-              kind: ConfigMap
+              apiVersion: terraform.silvios.me/v1alpha1
+              kind: StackInstance
               metadata:
+                name: mongodbatlas-team-1
                 namespace: default
-              data:
-                DEBUG: "1"
-                STACK_INSTANCE_NAME: mongodbatlas-team-1
+              spec:
+                stack:
+                  provider: mongodbatlas
+                  backend: azurerm
+                  registry: beesterraform.azurecr.io
+                  image: mongodbatlas-mongodb-team
+                  version: 0.1.1
+                vars:
+                  organization_id: ORG_ID
+                  team_name: TEAM_NAME
+                  team_usernames:
+                    - foo@bar.com
+                outputs:
+                  - atlas_team
 
-                stacks.auto.terraform.tfvars: |
-                  organization_id = "ORGANIZATION_ID"
-                  team_name = "TEAM_NAME"
-                  team_usernames = [ "smsilva@gmail.com", "silvio_silva@msn.com" ]
       patches:
         - type: FromCompositeFieldPath
           fromFieldPath: metadata.name
           toFieldPath: spec.forProvider.manifest.metadata.name
 
-        - type: CombineFromComposite
-          combine:
-            variables:
-              - fromFieldPath: spec.organizationId
-              - fromFieldPath: spec.team.name
-              - fromFieldPath: spec.team.users
-            strategy: string
-            string:
-              fmt: |
-                organization_id = %s
-                team_name = %s
-                users = %+q
-          toFieldPath: "spec.forProvider.manifest.data.stack_tfvars"
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.organizationId
+          toFieldPath: spec.forProvider.manifest.spec.vars.organization_id
+        
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.team.name
+          toFieldPath: spec.forProvider.manifest.spec.vars.team_name
+
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.team.users
+          toFieldPath: spec.forProvider.manifest.spec.vars.team_usernames
