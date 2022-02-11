@@ -16,11 +16,11 @@ applications:
     wave: 1
 
   - name: crossplane-providers
-    namespace: crossplane-system
+    namespace: crossplane
     wave: 2
 
   - name: crossplane-config
-    namespace: crossplane-system
+    namespace: crossplane
     wave: 3
 
   # - name: wasp-secrets
