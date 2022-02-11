@@ -7,9 +7,9 @@ destination:
   cluster: in-cluster
 
 applications:
-  - name: kustomize
-    namespace: default
-    wave: 0
+  # - name: kustomize
+  #   namespace: default
+  #   wave: 0
 
   - name: wasp-base
     namespace: default
@@ -23,6 +23,6 @@ applications:
     namespace: crossplane-system
     wave: 3
 
-  - name: wasp-secrets
-    namespace: default
-    wave: 4
+  # - name: wasp-secrets
+  #   namespace: default
+  #   wave: 4

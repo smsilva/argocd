@@ -1,0 +1,33 @@
+---
+apiVersion: bees.com/v1alpha1
+kind: ArgoCD
+metadata:
+  name: wasp-sbx-1
+spec:
+  domain: eastus2.argocd.silvios.me
+
+# https://wasp-sbx-1.eastus2.argocd.silvios.me
+
+  sso:
+    azure:
+      tentantId: a267367d-d04d-4a6b-84ef-0cc227ed6e9f
+      clientID: 5b59d3e0-04f4-4be4-aff4-b159a8ed4b46
+      groups:
+        - name: cloud-admin
+          id:   805a3d92-4178-4ad1-a0d6-70eae41a463a
+          role: admin
+
+        - name: aks-administrator
+          id:   d5075d0a-3704-4ed9-ad62-dc8068c7d0e1
+          role: admin
+
+  repositories:
+    - name: ado
+      url: "git@ssh.dev.azure.com:v3/ab-inbev/GHQ_B2B_Delta/bees-resources"
+      type: git
+
+  applications:
+    - name: bootstrap
+      repository: git@ssh.dev.azure.com:v3/ab-inbev/GHQ_B2B_Delta/bees-resources
+      revision: crossplane
+      path: charts/bootstrap
